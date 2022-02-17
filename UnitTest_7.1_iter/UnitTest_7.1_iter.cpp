@@ -10,7 +10,7 @@ namespace UnitTest71iter
 	{
 	public:
 		
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(test_sort)
 		{
 			const int rowCount = 4;
 			const int colCount = 4;
@@ -41,6 +41,45 @@ namespace UnitTest71iter
 			for (int row = 0; row < rowCount; row++)
 				for (int column = 0; column < colCount; column++)
 					Assert::AreEqual(sortedMatrix[row][column], matrix[row][column]);
+		};
+
+		TEST_METHOD(test_calc)
+		{
+			const int rowCount = 4;
+			const int colCount = 4;
+
+			int matrix[rowCount][colCount] = {
+				{-3,  0,  1, 2},
+				{ 3, -2, -4, 3},
+				{ 0, -3, -5, 6},
+				{-4, -2,  3, 4},
+			};
+
+			int expctedMatrix[rowCount][colCount] = {
+				{-3,  0,  1, 2},
+				{ 0, -2, -4, 0},
+				{ 0, -3, -5, 0},
+				{-4, -2,  0, 4},
+			};
+
+			int* matrixPointers[rowCount] = {
+				matrix[0],
+				matrix[1],
+				matrix[2],
+				matrix[3],
+			};
+
+			int Sum = 0;
+			int Count = 0;
+
+			Calc(matrixPointers, rowCount, colCount, Sum, Count);
+
+			for (int row = 0; row < rowCount; row++)
+				for (int column = 0; column < colCount; column++)
+					Assert::AreEqual(expctedMatrix[row][column], matrix[row][column]);
+
+			Assert::AreEqual(15, Sum);
+			Assert::AreEqual(4, Count);
 		}
 	};
 }

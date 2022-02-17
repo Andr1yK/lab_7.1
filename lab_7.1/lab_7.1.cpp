@@ -1,8 +1,8 @@
 ﻿// Lab_7_1.cpp
-// < прізвище, ім’я автора >
+// Кобетяк Андрій
 // Лабораторна робота № 7.1.
 // Пошук заданих елементів та впорядкування рядків / стовпчиків матриці.
-// Варіант 0
+// Варіант 12
 #include <iostream>
 #include <iomanip>
 #include <time.h>
@@ -102,8 +102,6 @@ void Change(int** matrix, const int col1, const int col2, const int rowCount)
 
 void Calc(int** matrix, const int rowCount, const int colCount, int& Sum, int& Count)
 {
-	Sum = 0;
-	Count = 0;
 	for (int row = 0; row < rowCount; row++)
 		for (int column = 0; column < colCount; column++)
 			if (matrix[row][column] % 3 == 0 && matrix[row][column] > 0)
